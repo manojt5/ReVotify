@@ -218,6 +218,9 @@ function PollQuestionForm() {
   
     // Continue with your submit logic here
     poll_setId((prevId) => ({ ...prevId, questions: questions }));
+    if(sessionStorage.getItem('user')){
+      poll_setId((prevId) => ({ ...prevId, userid: JSON.parse(sessionStorage.getItem('user'))?.email }));
+    }
     console.log(poll_id);
     navigate('/pollreview');
   };

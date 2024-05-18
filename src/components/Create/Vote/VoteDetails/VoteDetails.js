@@ -1,18 +1,28 @@
-import React, { useState,useContext } from 'react';
+import React, { useState,useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Context } from "../../../../utils/context"; 
 import * as XLSX from 'xlsx';
 const PollDetails = () => {
+  
+  
   const navigate = useNavigate();
   const [file,setFile]=useState(null);
   const{vote_id,vote_setId,user}=useContext(Context);
-  // const {voter}
+  useEffect(() => {
+    if(sessionStorage.getItem('user')){
+      vote_setId((prevId) => ({
+        ...prevId,
+        userid:JSON.parse(sessionStorage.getItem('user'))?.email
+      }));
+    }
+  }, [])
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
     vote_setId((prevId) => ({
       ...prevId,
       title: newTitle,
     }));
+
     
   };
   const handlestarttimechange=(e)=>{

@@ -6,13 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import { useContext } from 'react';
 import Context from "./utils/context";
 import AppContext from "./utils/context";
-
+import { GoogleOAuthProvider } from '@react-oauth/google';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <GoogleOAuthProvider clientId="314192454916-oev86cgd8ls0s6lkafluvv5m1v3hlufp.apps.googleusercontent.com">
     <AppContext>
     <App />
     </AppContext>
+    </GoogleOAuthProvider>
   </React.StrictMode>
 );
 

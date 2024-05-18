@@ -451,7 +451,8 @@ const port = 3001;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.urlencoded({ limit: "25mb" }));
+app.use(express.urlencoded({ limit: "25mb" }));+
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
@@ -486,8 +487,8 @@ mongoose.connect('mongodb+srv://trailing:trailing@trialing.rde83gv.mongodb.net/V
 app.post('/polls', async (req, res) => {
   try {
     const newPoll = await PollModel.create(req.body);
-    const user = await UserModel.findOne({ is_logged_in: true });
-    newPoll.userid = user.email
+    // const user = await UserModel.findOne({ is_logged_in: true });
+    newPoll.userid = req.body.userid
     const new_updatedPoll = await newPoll.save();
     console.log("in server side");
     console.log(req.body.voterslist);
@@ -534,7 +535,9 @@ app.post('/polls', async (req, res) => {
 app.post('/vote', async (req, res) => {
   try {
     const newVote = await VoteModel.create(req.body);
-    const user = await UserModel.findOne({ is_logged_in: true });
+    
+    const useremail=req.body.userid
+    const user = await UserModel.findOne({ email:useremail });
     newVote.userid = user.email
     const new_updatedVote = await newVote.save();
     console.log("in server side");
@@ -595,12 +598,14 @@ app.get('/polls', async (req, res) => {
 app.get('/partpolls', async (req, res) => {
   try {
     // Find the user whose is_logged_in is true
-    const user = await UserModel.findOne({ is_logged_in: true });
-
-    if (!user) {
+    // const user = await UserModel.findOne({ is_logged_in: true });
+    const userEmail=req.query.email
+    // console.log(user)
+    const user = await UserModel.findOne({ email: userEmail });
+    if (!userEmail) {
       return res.status(404).json({ message: 'User not found' });
     }
-
+    // const user = await UserModel.findOne({ email: userEmail });
     // Fetch only the relevant polls based on poll_participate
     const polls = await PollModel.find({ _id: { $in: user.poll_participate } });
     ls = [polls,user.email]
@@ -617,7 +622,9 @@ app.get('/partpolls', async (req, res) => {
 app.get('/partvote', async (req, res) => {
   try {
     // Find the user whose is_logged_in is true
-    const user = await UserModel.findOne({ is_logged_in: true });
+    const usermail = req.query.email;
+    const user=await UserModel.findOne({email:usermail})
+
 
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
@@ -713,8 +720,10 @@ app.post("/login", async (req, res) => {
 app.get('/history', async (req, res) => {
   try {
     // Find the user whose is_logged_in is true
-    const user = await UserModel.findOne({ is_logged_in: true });
-
+    // const user = await UserModel.findOne({ is_logged_in: true });
+    // console.log("sdfgh")
+    const user=req.query
+    // console.log(user)
     if (!user) {
       return res.status(404).json({ message: 'User not found' });
     }
@@ -725,7 +734,7 @@ app.get('/history', async (req, res) => {
     ls.push(polls)
     const vote_forms = await VoteModel.find({ userid: user.email});
     ls.push(vote_forms)
-    console.log(ls)
+    // console.log(ls)
 
     res.send(ls);
   } catch (error) {
@@ -796,13 +805,14 @@ app.get("/getuser", async (req, res) => {
 
 app.put('/vote/:id', async (req, res) => {
   try {
-    const updatedVote = await VoteModel.findByIdAndUpdate(req.params.id, req.body.Data, { new: true });
+    const { Data, email } = req.body;
+    const updatedVote = await VoteModel.findByIdAndUpdate(req.params.id,Data, { new: true });
 
     if (!updatedVote) {
       return res.status(404).send('Poll not found');
     }
-    const user = await UserModel.findOne({ is_logged_in: true });
-    updatedVote.participated.push(user.email);
+    // const user = await UserModel.findOne({ is_logged_in: true });
+    updatedVote.participated.push(email);
     const new_updatedVote = await updatedVote.save();
     console.log(new_updatedVote);
     res.json(new_updatedVote);
@@ -839,13 +849,14 @@ app.get('/vote/:id', async (req, res) => {
 // Update a poll by ID
 app.put('/polls/:id', async (req, res) => {
   try {
-    const updatedPoll = await PollModel.findByIdAndUpdate(req.params.id, req.body.Data, { new: true });
+    const { Data, email } = req.body;
+    const updatedPoll = await PollModel.findByIdAndUpdate(req.params.id, Data, { new: true });
 
     if (!updatedPoll) {
       return res.status(404).send('Poll not found');
     }
-    const user = await UserModel.findOne({ is_logged_in: true });
-    updatedPoll.participated.push(user.email);
+    // const user = await UserModel.findOne({ is_logged_in: true });
+    updatedPoll.participated.push(email);
     const new_updatedPoll = await updatedPoll.save();
     console.log(new_updatedPoll);
     res.json(new_updatedPoll);

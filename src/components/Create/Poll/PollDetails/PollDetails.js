@@ -13,6 +13,7 @@ const PollDetails = () => {
       ...prevId,
       title: newTitle,
     }));
+    console.log(poll_id)
     
   };
   const handlestarttimechange=(e)=>{

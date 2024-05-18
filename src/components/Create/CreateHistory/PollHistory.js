@@ -119,15 +119,30 @@ const DessertTable = () => {
   const [typeFilter, setTypeFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/history")
-      .then((res) => {
-        // Flatten the nested arrays
-        const flattenedDesserts = res.data.flat();
-        setDesserts(flattenedDesserts);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+//   useEffect(() => {
+//     const user = JSON.parse(sessionStorage.getItem('user'))?.email;
+
+//     axios.get("http://localhost:3001/history", {
+//   data: { email: user }, // Send user email in request body
+// })
+//     .then((res) => {
+//       // Flatten the nested arrays
+//       const flattenedDesserts = res.data.flat();
+//       setDesserts(flattenedDesserts);
+//     })
+//     .catch((err) => console.log(err));
+//   }, []);
+useEffect(() => {
+  const user = JSON.parse(sessionStorage.getItem('user'))?.email;
+
+  axios.get(`http://localhost:3001/history?email=${user}`)
+    .then((res) => {
+      // Flatten the nested arrays
+      const flattenedDesserts = res.data.flat();
+      setDesserts(flattenedDesserts);
+    })
+    .catch((err) => console.log(err));
+}, []);
 
   const navigate = useNavigate();
 

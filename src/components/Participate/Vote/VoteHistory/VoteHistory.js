@@ -124,7 +124,19 @@ const PollHistory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/partvote")
+    const email = JSON.parse(sessionStorage.getItem('user'))?.email;
+
+  //   axios.get("http://localhost:3001/history", {
+  //     email: user, // Send user email in request body
+  //   })
+  //   .then((res) => {
+  //     // Flatten the nested arrays
+  //     const flattenedDesserts = res.data.flat();
+  //     setDesserts(flattenedDesserts);
+  //   })
+  //   .catch((err) => console.log(err));
+  // }, []);
+  axios.get(`http://localhost:3001/partvote?email=${email}`)
       .then(res => {
         setElectionData(res.data[0]);
         setCurrentUser(res.data[1]);

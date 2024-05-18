@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import "tailwindcss/tailwind.css";
+// import { setTimeout } from "timers/promises";
 
 function Userview() {
   const [selectedCandidate, setSelectedCandidate] = useState("");
@@ -25,49 +26,83 @@ function Userview() {
   }, [id]);
 
   const handleRadioChange = (candidate) => {
+    console.log(candidate)
     setSelectedCandidate(candidate);
   };
+const handleVote1=()=>{
+  const updatedOptions = questionData.options.map((option) => {
+    if (option.option === selectedCandidate) {
+      console.log("Incrementing responses for selected option:", option.option);
+      return { ...option, responses: option.responses + 1 };
+    }
+    return option;
+  });
+  setTimeout(() => {
+    console.log(questionData)
+  }, 10000);
 
+  // Log the updated options
+  console.log("Updated Options:", updatedOptions);
+
+  // Update the questionData with the modified options
+  setQuestionData((prevData) => ({
+    ...prevData,
+    options: updatedOptions,
+  }));
+  setTimeout(() => {
+    console.log(questionData)
+  }, 10000);
+  // Log the updated questionData
+  console.log("Updated Question Data:", questionData);
+}
+  // const handleVote = async () => {
+  //   // Add logic to increment the responses count for the selected option
+  //   handleVote1()
+  //   // Perform the API call when data is updated
+  //   const userEmail = JSON.parse(sessionStorage.getItem('user'))?.email;
+  //   try {
+  //     const res = await axios.put(`http://localhost:3001/vote/${id}`, { data: { ...data, questions: questionData },email:userEmail }, {
+  //       timeout: 10000 // 10 seconds timeout
+  //   });
+  //     console.log("API Response:", res);
+  //   } catch (err) {
+  //     console.log("API Error:", err);
+  //   }
+  
+  //   // Redirect to the results page or perform other actions
+  //   navigate(`/votehistory`);
+  // };
   const handleVote = async () => {
     // Add logic to increment the responses count for the selected option
-    const updatedOptions = questionData.options.map((option) => {
-      if (option.option === selectedCandidate) {
-        console.log("Incrementing responses for selected option:", option.option);
-        return { ...option, responses: option.responses + 1 };
-      }
-      return option;
-    });
-  
-    // Log the updated options
-    console.log("Updated Options:", updatedOptions);
-  
-    // Update the questionData with the modified options
-    setQuestionData((prevData) => ({
-      ...prevData,
-      options: updatedOptions,
-    }));
-  
-    // Log the updated questionData
-    console.log("Updated Question Data:", questionData);
-  
-    // Perform the API call when data is updated
-    try {
-      const res = await axios.put(`http://localhost:3001/vote/${id}`, { data: { ...data, questions: questionData } });
-      console.log("API Response:", res);
-    } catch (err) {
-      console.log("API Error:", err);
-    }
-  
-    // Redirect to the results page or perform other actions
-    navigate(`/votehistory`);
-  };
-  
+    handleVote1();
+
+    // Perform the API call when data is updated after a 10-second delay
+    const userEmail = JSON.parse(sessionStorage.getItem('user'))?.email;
+
+    setTimeout(async () => {
+        try {
+            const res = await axios.put(`http://localhost:3001/vote/${id}`, { 
+                data: { ...data, questions: questionData },
+                email: userEmail 
+            }, {
+                timeout: 10000 // 10 seconds timeout for the request
+            });
+            console.log("API Response:", res);
+        } catch (err) {
+            console.log("API Error:", err);
+        }
+
+        // Redirect to the results page or perform other actions
+        navigate(`/votehistory`);
+    }, 10000); // 10 seconds delay
+};
+
   
   
 
   // Log the current state outside the handleVote function
-  console.log("Current State - Question Data:", questionData);
-  console.log("Current State - Data:", data);
+  // console.log("Current State - Question Data:", questionData);
+  // console.log("Current State - Data:", data);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">

@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
 import Header from "./components/Header/Header";
@@ -39,20 +42,25 @@ function App() {
   const {user,setUser}=useContext(Context);
   useEffect(() => {
     const getUser = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/getuser');
+      // try {
+      //   const response = await axios.get('http://localhost:3001/getuser');
   
-        if (response.status === 200) {
-          setUser(response.data.user.email);
-          console.log("setting");
-          console.log(response.data.user.email);
-          console.log(user); // This may not reflect the updated value immediately
-        } else {
-          console.log('Failed to get user.');
-        }
-      } catch (error) {
-        console.error('Get user error:', error);
-      }
+      //   if (response.status === 200) {
+      //     setUser(response.data.user.email);
+      //     console.log("setting");
+      //     console.log(response.data.user.email);
+      //     console.log(user); // This may not reflect the updated value immediately
+      //   } else {
+      //     console.log('Failed to get user.');
+      //   }
+      // } catch (error) {
+      //   console.error('Get user error:', error);
+      // }
+      const storedUser = JSON.parse(sessionStorage.getItem('user'))?.email;
+    if (storedUser) {
+      console.log(storedUser)
+      setUser(storedUser);
+    }
     };
   
     getUser(); // Call the getUser function
@@ -72,6 +80,20 @@ function App() {
             path="/"
             element={
               <>
+              
+
+                {/* <GoogleLogin
+                  onSuccess={credentialResponse => {
+                    console.log(credentialResponse);
+                    const decoded = jwtDecode(credentialResponse?.credential)
+                    console.log(decoded)
+                    console.log(sessionStorage)
+                  }}
+                  onError={() => {
+                    console.log('Login Failed');
+                    
+                  }}
+                /> */}
                 <Header />
                 <Home />
                 <AboutUs />

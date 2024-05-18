@@ -17,6 +17,9 @@ const Login = () => {
         password,
       });
       if (response.status === 200) {
+        var k=email
+        const userData = { email: email ,name:k.slice(0, -10)};
+            sessionStorage.setItem('user', JSON.stringify(userData));
         navigate("/")
         alert("Login successful");
         setUser(email);

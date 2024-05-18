@@ -122,7 +122,8 @@ const PollHistory = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get("http://localhost:3001/partpolls")
+    const email=JSON.parse(sessionStorage.getItem('user'))?.email
+    axios.get(`http://localhost:3001/partpolls?email=${email}`)
       .then(res => {
         //console.log('Full response:', res.data);
   

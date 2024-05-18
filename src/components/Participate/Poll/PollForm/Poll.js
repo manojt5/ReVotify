@@ -236,10 +236,15 @@ export default function Poll() {
   }, [id]);
 
   const handleSubmit = () => {
+    const userEmail = JSON.parse(sessionStorage.getItem('user'))?.email;
+
     setData((prevId)=>({...prevId,questions:pollData}))
     console.log("final")
     console.log("data",Data)
-    axios.put(`http://localhost:3001/polls/${id}`,{Data})
+    axios.put(`http://localhost:3001/polls/${id}`, {
+        Data,
+        email: userEmail
+    })
     .then(res=>{console.log(res)})
     .catch(err=>{console.log(err)})
     navigate(`/pollresults/${id}`);
