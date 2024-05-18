@@ -1,0 +1,46 @@
+/* VotingReview.css */
+
+.voting-review {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .vote-details,
+  .voters-list,
+  .options {
+    margin-bottom: 20px;
+  }
+  
+  .candidate {
+    display: flex;
+    align-items: center;
+    justify-content: center !important; /* Center the content horizontally */
+    text-align: left;
+    margin-bottom: 10px; /* Add some gap between options */
+  }
+  
+  .candidate img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px; /* Adjust the margin as needed */
+  }
+  
+  .submit-button {
+    margin-top: 20px; /* Add some space between options and the submit button */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  

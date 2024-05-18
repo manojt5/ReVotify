@@ -1,0 +1,38 @@
+.home 
+{
+  height: 100vh;
+  text-align: center;
+}
+.Login 
+{
+  height: 100vh;
+  background-color: white;
+}
+
+
+.right 
+{
+  width: 45vw;
+  float: right;
+}
+
+.left 
+{
+  width: 45vw;
+  float: left;
+  margin-left: 45px;
+  padding-top: 10%;
+}
+
+@media screen and (max-width: 750px)
+{
+  .left 
+  {
+    display: none;
+  }
+  .right 
+  {
+    float: none;
+    padding: 10%;
+  } 
+}

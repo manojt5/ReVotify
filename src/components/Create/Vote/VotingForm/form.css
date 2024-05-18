@@ -1,0 +1,27 @@
+.Candidate 
+{
+    font-size: 1.4rem;
+    color: brown;
+}
+
+.name-text
+{
+    width: 30%;
+    height: 3vh;
+    margin-left: 15%;
+    padding-left: 10px;
+}
+
+.image-info
+{
+    margin: 15px 10%;
+}
+
+.btn1
+{
+    width: 30px;
+    font-size: 1.5rem;
+    color: white;
+    background: black !important;
+    margin-left: 5px; 
+}

@@ -1,0 +1,30 @@
+a{
+    /* margin-right: 90px; */
+    margin-bottom: 100px;
+    text-align: left;
+}
+.mainnn{
+    font-family: 'Red Hat Display', sans-serif;
+}
+h1{
+    margin-bottom: 80px !important;
+    text-align: center;
+}
+.containerrr {
+    overflow: hidden;
+}
+
+.mainnn img {
+    transition: all ease 0.3s;
+    display: block;
+    width: 100%;
+}
+
+.mainnn img:hover {
+    transform: scale(1.1);
+    
+}
+.img-hover-zoom {
+    height: 300px; /* Modify this according to your need */
+    overflow: hidden; /* Removing this will break the effects */
+  }

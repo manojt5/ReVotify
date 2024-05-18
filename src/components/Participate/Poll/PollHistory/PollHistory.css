@@ -1,0 +1,105 @@
+.election-card {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+    margin: 10px;
+    width: 60vw;
+  }
+  .pollhistory-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width:97vw;
+    margin-bottom: 20px;
+  }
+  .election-card h2{
+    font-size: 40px;
+  }
+  .election-card p{
+    font-size: 20px;
+  }
+  
+  .election-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .left-section {
+    flex: 1;
+    padding: 15px;
+  }
+  
+  .right-section {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+  }
+  
+  .countdown {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .countdown p {
+    color: #666;
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .countdown-timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e74c3c;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .buttons button {
+    padding: 8px;
+    font-size: 20px;
+    background-color: #9333EA;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 10px;
+    width:150px
+  }
+  
+  .buttons button:hover {
+    background-color: #7128b5;
+  }
+ 
+  .sen {
+    height: 45px;
+    width: 220px;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+  }
+  .sen option {
+    margin: 20px;
+    font-size: 15px;
+  }
+  .custom-select::after {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .sen option:last-child {
+    border-radius: 5px;
+  }

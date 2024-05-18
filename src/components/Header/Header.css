@@ -1,0 +1,73 @@
+img {
+  height: 500px;
+  width: 500px;
+}
+.navba {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff; /* White background */
+  padding: 10px 30px; /* Adjust padding as needed */
+  color: #000; /* Black text color */
+  font-family: "Red Hat Display", sans-serif;
+  padding-left: 100px;
+  padding-top: 25px;
+  padding-right: 50px;
+}
+
+element.style {
+  border-top-width: 1px;
+  border-top-color: grey;
+  width: 95%;
+  border-radius: 1px;
+}
+.navba-left {
+  /* Adjust font size */
+  font-weight: bold;
+  align-items: center;
+}
+.text-4xl {
+  text-decoration: none;
+  color: black;
+}
+.na-links {
+  list-style: none;
+  display: flex;
+  font-weight: bolder;
+  align-items: center;
+  font-size: 20px;
+  margin-bottom: 0 !important;
+}
+
+.na-links li {
+  margin-right: 20px; /* Adjust spacing between links */
+}
+.na-links span:hover {
+  color: #9333ea;
+  /* background-color: aqua; */
+}
+
+.na-links a{
+  text-decoration: none;
+  color: #000; /* Black text color for links */
+}
+.stic {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+  /* z-index: 100; */
+  transform: translateY(-600px);
+  animation: StickyHeader 0.5s ease forwards;
+}
+hr{
+  margin: 0px !important;
+}
+
+@keyframes StickyHeader {
+  0% {
+    transform: translateY(-600px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

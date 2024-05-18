@@ -1,0 +1,78 @@
+/* Add this CSS to your stylesheet or in your component */
+
+.overall-progress-bar {
+  height: 10px;
+  background-color: #3498db;
+  width: 0;
+  border-radius: 4px;
+  margin-bottom: 20px; /* Adjust margin as needed */
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.Question {
+  margin-bottom: 20px;
+}
+
+#question-txt {
+  font-size: 24px;
+}
+
+.option-container {
+  margin-bottom: 20px;
+  display: block !important;
+}
+
+.option {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.process-bar {
+  height: 100%;
+  background-color: #3498db;
+  width: 0;
+  border-radius: 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: none;
+  opacity: 0.4; /* Initially hide the process bar */
+}
+
+.option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.option-txt {
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex-grow: 1;
+}
+
+.poll-button {
+  background-color: #2ecc71 !important;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 32px;
+}
+
+.poll-button  {
+  background-color: #27ae60;
+}

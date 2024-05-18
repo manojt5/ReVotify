@@ -1,0 +1,209 @@
+/* DessertTable.css */
+.app{
+  font-family: 'Red Hat Display', sans-serif !important;
+}
+table {
+    margin: auto;
+    margin-top: 30px;
+    width: 90%;
+    /* border-collapse: separate; */
+    /* border-spacing: 0 30px;  */
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin-bottom: 50px;
+  }
+  
+  th, td {
+    padding: 20px;
+    text-align: left;
+  }
+  
+  tr {
+    border: none; /* Remove border from tr */
+    border-radius: 5px; /* Set border-radius for the entire row */
+  }
+  
+  /* th:first-child,
+  td:first-child {
+    border-radius: 5px 0 0 5px; 
+  }
+  
+  th:last-child,
+  td:last-child {
+    border-radius: 0 5px 5px 0; 
+  } */
+  
+  tr {
+    border: 1px solid #ddd;
+    /* box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1); */
+    /* background-color: #C77DFF; */
+  transition: 0.2s;
+  }
+  
+  tr:nth-child(odd) {
+    /* background-color:#C77DFF; */
+    color: black;
+  }
+  
+  tr:nth-child(even) {
+    /* background-color: white; */
+    color: black;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+    color:black;
+    cursor: pointer;
+  }
+  
+  th:hover {
+    background-color: #ddd;
+  }
+  tr:hover {
+    background-color:#E0AAFF;
+    cursor:pointer;
+  }
+  .iconn {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+  .status-active {
+    background-color: #2563eb;
+    /* background-color: #248afd; */
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    color:white;
+    text-align:center
+  }
+  .status-inactive{
+    background-color: #28A745;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    color:white;
+    text-align:center
+  }
+  .type-poll{
+    background-color: #f5a623;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    color:white;
+    text-align:center
+  }
+  .type-vote{
+    background-color: #248afd;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100px;
+    color:white;
+    text-align:center
+  }
+  /* .sen{
+    padding: 10px !important;
+    width:200px;
+    height:50px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+  } */
+  /* Style for the custom select container */
+.custom-select {
+  position: relative;
+}
+.sen {
+  height: 45px;
+  width: 220px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+.sen option {
+  margin: 20px;
+  font-size: 15px;
+}
+.custom-select::after {
+  /* content: '\25BC';  */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.sen option:last-child {
+  border-radius: 5px;
+}
+.create-poll-div {
+  display: inline;
+  margin-right: 10px;
+}
+
+/* .create-poll-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-poll-btn:hover {
+  background-color: #45a049;
+} */
+.arrow-button {
+  display: flex;
+  /* color: #C2FFE9; */
+  color:white;
+  background-color: #00b874;
+  padding: 10px 16px;
+  border-radius: 20px;
+  transition: all .3s ease;
+  font-weight: bold;
+  cursor: pointer;
+  align-items: center;
+  font-size: 14px;
+}
+
+.arrow-button > .arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 2px solid #C2FFE9;
+  border-bottom: 2px solid #C2FFE9;
+  position: relative;
+  transform: rotate(-45deg);
+  margin: 0 6px;
+  transition: all .3s ease;
+}
+
+.arrow-button > .arrow::before {
+  display: block;
+  background-color: currentColor;
+  width: 3px;
+  transform-origin: bottom right;
+  height: 2px;
+  position: absolute;
+  opacity: 0;
+  bottom: calc(-2px / 2);
+  transform: rotate(45deg);
+  transition: all .3s ease;
+  content: "";
+  right: 0;
+}
+
+.arrow-button:hover > .arrow {
+  transform: rotate(-45deg) translate(4px, 4px);
+  border-color: text-hover-color;
+}
+
+.arrow-button:hover > .arrow::before {
+  opacity: 1;
+  width: 8px;
+}
+
+.arrow-button:hover {
+  background-color: #017A4F;
+  color: #fff;
+}
+
+  

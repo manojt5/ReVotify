@@ -1,0 +1,42 @@
+/* VotingReview.css */
+
+.voting-review {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .vote-details {
+    margin-bottom: 20px;
+  }
+  
+  .voters-list {
+    margin-bottom: 20px;
+  }
+  
+  .options {
+    margin-bottom: 30px; /* Increased gap between question and options */
+  }
+  
+  .candidate {
+    margin-bottom: 5px; /* Reduced gap between options */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align options to the left */
+  }
+  
+  .submit-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .submit-button:hover {
+    background-color: #45a049;
+  }
+  
