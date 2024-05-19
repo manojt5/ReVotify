@@ -32,6 +32,7 @@ function Header() {
       const response = await axios.post('http://localhost:3001/logout');
   
       if (response.status === 200) {
+        sessionStorage.removeItem('user')
         console.log('Logout successful.');
         window.location.reload();
       } else {
