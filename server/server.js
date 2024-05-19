@@ -446,10 +446,17 @@ const { PollModel, UserModel ,Vote, VoteModel} = require('./schema');
 const cors=require("cors");
 
 const app = express();
+app.use(cors(
+  {
+    origin: '*',
+    methods: ["POST","GET"],
+    // credentials: true
+  }
+))
 const port = 3001;
 
 app.use(bodyParser.json());
-app.use(cors());
+// app.use(cors());
 
 app.use(express.urlencoded({ limit: "25mb" }));+
 
