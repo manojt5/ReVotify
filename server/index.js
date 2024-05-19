@@ -25,7 +25,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   next();
 });
-
+app.get("/",(req,res)=>{
+  res.send("hi")
+}) 
 app.post("/uploadImage", (req, res) => {
   uploadImage(req.body.image)
     .then((url) => res.send(url))
