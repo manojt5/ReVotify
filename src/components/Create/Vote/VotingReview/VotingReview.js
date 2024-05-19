@@ -33,7 +33,7 @@ useEffect(() => {
 
   const handleSubmit = () => {
     console.log(vote_id)
-    axios.post("http://localhost:3001/vote",vote_id)
+    axios.post("https://votify-back.vercel.app/vote",vote_id)
     .then(result=>{console.log(result)})
     .catch(err=>console.log(err));
     // console.log('Form submitted!');

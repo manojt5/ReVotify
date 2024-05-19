@@ -13,7 +13,7 @@ const PollDetailsView = () => {
   useEffect(() => {
     // setViewid(id);
 
-    axios.get(`http://localhost:3001/polls/${id}`)
+    axios.get(`https://votify-back.vercel.app/polls/${id}`)
       .then((response) => {
         setPoll(response.data);
         console.log(response.data)

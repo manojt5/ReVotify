@@ -14,7 +14,7 @@ function Userview() {
   useEffect(() => {
     // Fetch data from the /vote/:id endpoint
     axios
-      .get(`http://localhost:3001/vote/${id}`)
+      .get(`https://votify-back.vercel.app/vote/${id}`)
       .then((response) => {
         const data = response.data;
         setData(data);
@@ -81,7 +81,7 @@ const handleVote1=()=>{
 
     setTimeout(async () => {
         try {
-            const res = await axios.put(`http://localhost:3001/vote/${id}`, { 
+            const res = await axios.put(`https://votify-back.vercel.app/vote/${id}`, { 
                 data: { ...data, questions: questionData },
                 email: userEmail 
             }, {

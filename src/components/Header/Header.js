@@ -29,7 +29,7 @@ function Header() {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3001/logout');
+      const response = await axios.post('https://votify-back.vercel.app/logout');
   
       if (response.status === 200) {
         sessionStorage.removeItem('user')

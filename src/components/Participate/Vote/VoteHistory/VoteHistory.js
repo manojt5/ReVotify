@@ -136,7 +136,7 @@ const PollHistory = () => {
   //   })
   //   .catch((err) => console.log(err));
   // }, []);
-  axios.get(`http://localhost:3001/partvote?email=${email}`)
+  axios.get(`https://votify-back.vercel.app/partvote?email=${email}`)
       .then(res => {
         setElectionData(res.data[0]);
         setCurrentUser(res.data[1]);

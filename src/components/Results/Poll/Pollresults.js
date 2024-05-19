@@ -113,7 +113,7 @@ const ResultsPage = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/polls/${id}`)
+      .get(`https://votify-back.vercel.app/polls/${id}`)
       .then((res) => {
         console.log(res.data);
         setPollData(res.data.questions);

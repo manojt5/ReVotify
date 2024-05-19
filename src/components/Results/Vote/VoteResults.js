@@ -11,7 +11,7 @@ const VoteResults = () => {
   useEffect(() => {
     // Fetch data from the /vote/:id endpoint
     axios
-      .get(`http://localhost:3001/vote/${id}`)
+      .get(`https://votify-back.vercel.app/vote/${id}`)
       .then((response) => {
         const data = response.data;
         setVoteData(data);

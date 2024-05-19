@@ -123,7 +123,7 @@ const PollHistory = () => {
 
   useEffect(() => {
     const email=JSON.parse(sessionStorage.getItem('user'))?.email
-    axios.get(`http://localhost:3001/partpolls?email=${email}`)
+    axios.get(`https://votify-back.vercel.app/partpolls?email=${email}`)
       .then(res => {
         //console.log('Full response:', res.data);
   

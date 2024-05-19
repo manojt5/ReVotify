@@ -21,7 +21,7 @@ const Signup = () => {
   const submitsignup = () => {
     console.log(name, email, password);
     axios
-      .post("http://localhost:3001/signup", { name, email, password })
+      .post("https://votify-back.vercel.app//signup", { name, email, password })
       .then((result) => {
         console.log(result);
         // Check if the response contains a message indicating an existing account

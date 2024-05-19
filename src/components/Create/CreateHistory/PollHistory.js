@@ -135,7 +135,7 @@ const DessertTable = () => {
 useEffect(() => {
   const user = JSON.parse(sessionStorage.getItem('user'))?.email;
 
-  axios.get(`http://localhost:3001/history?email=${user}`)
+  axios.get(`https://votify-back.vercel.app/history?email=${user}`)
     .then((res) => {
       // Flatten the nested arrays
       const flattenedDesserts = res.data.flat();
@@ -184,7 +184,7 @@ useEffect(() => {
 
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:3001/polls/${id}`)
+    axios.delete(`https://votify-back.vercel.app/polls/${id}`)
       .then((res) => {
         console.log(res);
         window.location.reload();

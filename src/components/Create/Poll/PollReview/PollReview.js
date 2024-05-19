@@ -43,7 +43,7 @@ const VotingReview = () => {
   const handleSubmit = () => {
     // JSON.parse(sessionStorage.getItem('user'))?.email
     const user=JSON.parse(sessionStorage.getItem('user'))?.email
-    axios.post("http://localhost:3001/polls",poll_id)
+    axios.post("https://votify-back.vercel.app/polls",poll_id)
     .then(result=>console.log(result))
     .catch(err=>console.log(err));
     // console.log('Form submitted!');
