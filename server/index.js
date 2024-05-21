@@ -453,10 +453,12 @@ app.delete('/polls/:id', async (req, res) => {
   try {
     // Find and delete the poll
     const deletedPoll = await PollModel.findByIdAndDelete(req.params.id);
-
     // If the poll was not found
     if (!deletedPoll) {
-      return res.send('Poll not found');
+      const deletedPoll1=await VoteModel.findByIdAndDelete(req.params.id);
+      if(!deletedPoll1){
+        return res.send('Poll not found1');
+      }
     }
 
     // Remove the deleted poll's ID from users' poll_participate array

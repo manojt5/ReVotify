@@ -27,21 +27,21 @@ function Header() {
   };
   
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post('https://votify-back.vercel.app/logout');
+  // const handleLogout = async () => {
+  //   try {
+  //     const response = await axios.post('https://votify-back.vercel.app/logout');
   
-      if (response.status === 200) {
-        sessionStorage.removeItem('user')
-        console.log('Logout successful.');
-        window.location.reload();
-      } else {
-        console.log('Logout failed.');
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
-    }
-  };
+  //     if (response.status === 200) {
+  //       sessionStorage.removeItem('user')
+  //       console.log('Logout successful.');
+  //       window.location.reload();
+  //     } else {
+  //       console.log('Logout failed.');
+  //     }
+  //   } catch (error) {
+  //     console.error('Logout error:', error);
+  //   }
+  // };
   
 
   // useEffect(() => {
@@ -56,6 +56,10 @@ function Header() {
     if (storedUser) {
       setUser(JSON.parse(storedUser));
     }
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
   const handleSuccess = (credentialResponse) => {
     const userObject = jwtDecode(credentialResponse.credential);
@@ -75,7 +79,7 @@ function Header() {
     console.log('Login Failed');
   };
 
-  const handleLoggout = () => {
+  const handleLogout = () => {
     googleLogout();
     // eslint-disable-next-line no-restricted-globals
     location.reload();
@@ -121,7 +125,7 @@ function Header() {
                 tabindex="-1"
               >
                 <div class="py-1" role="none">
-                  <span onClick={()=>{navigate("/polldetails")}}
+                  <span onClick={()=>{toggleDropdown();navigate("/polldetails")}}
                   
                     class="text-gray-700 block px-4 py-2 text-base"
                     role="menuitem"
@@ -131,7 +135,7 @@ function Header() {
                   >
                     Create a Poll
                   </span>
-                  <span onClick={()=>{navigate("/votedetails")}}
+                  <span onClick={()=>{toggleDropdown();navigate("/votedetails")}}
                     class="text-gray-700 block px-4 py-2 text-base"
                     role="menuitem"
                     tabindex="-1"
@@ -171,9 +175,9 @@ function Header() {
             </span>
           </li>
           {sessionStorage.getItem('user') ? (
-        <div>
+        <div style={{marginLeft:'-20px'}}>
           <h3>Welcome, {user.name}</h3>
-          <button onClick={handleLoggout}>Logout</button>
+          {/* <button onClick={handleLogout}>Logout</button> */}
         </div>
       ) : (
         <GoogleLogin
@@ -181,7 +185,7 @@ function Header() {
           onError={handleError}
         />
       )}
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center" style={{marginLeft:'20px',boxShadow:'3px'}}>
             {user==""?(<span onClick={()=>{navigate("/login")}}
               class="relative inline-flex items-center justify-center px-6 py-3 text-lg font-medium tracking-tighter text-white bg-transparent shadow rounded-md group"
               style={{ margin: '0px' }}

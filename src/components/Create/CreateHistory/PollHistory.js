@@ -185,6 +185,7 @@ useEffect(() => {
   const handleDelete = (id) => {
     console.log(id);
     axios.delete(`https://votify-back.vercel.app/polls/${id}`)
+    // axios.delete(`http://localhost:3001/polls/${id}`)
       .then((res) => {
         console.log(res);
         window.location.reload();
